@@ -1,68 +1,10 @@
-MGMT - Satellite Install/Configuration
-======================================
+[![Build Status](https://travis-ci.org/oasis-roles/rhsm.svg?branch=master)](https://travis-ci.org/oasis-roles/rhsm)
 
-Initially the plan was to use oasis and levelup to completely install and configure satellite, and was pretty far along when theforeman ansible modules were discovered.  Once theforeman ansible modules were discovered, all configuration was switch to using them. Some roles such as sat_settings and sat_content still need to be refactered to use them.
+RHSM
+=====
 
-Purpose
--------
-
-These roles will create and prep a VM for satellite, install satellite, create and sync products, and finally configure satellite in a disconnected environment.  
-
-- sat_vm:         Creates a libvirt vm to install satellite on
-- sat_localrepo:  Creates /etc/yum.repos.d/disconnected.repo on satellite to hit the local content web server
-- sat_yum_update: yum updates and reboots satellite
-- sat_firewall:   Configure satellite firewall ports/services
-- sat_install:    Installs satellite packages, satellite-answer.yaml and runs satellite scenario install
-  - verifies initial password provided
-  - verifies host for satellite host meets requirements/viablitiy
-  - installs satellite packages
-  - copies answer file
-  - handler installs satellite software using answer file
-- sat_settings:   Config satellite settings
-- sat_content:    Creates satellite product, repos and syncs them
-  - copy manifest
-  - install manifest
-  - change cdn url for disconnected environment
-  - enable rh repos
-  - enable thirdpary repos
-  - sync repos 
-- sat_config:     Configures satellite to meet customer requirements
-  - host collections
-  - lifecycle environments
-  - create/publish content views
-  - activation keys
-  - subnets
-  - domains
-  - hostgroups
-  - compute nodes *
-  - compute profiles *
-  - ansible/puppet *
-  - ...
-          
-* planned
-
-
-Links
--------
-
-VM creation:
-- https://docs.ansible.com/ansible/latest/modules/virt_module.html
-- https://hooks.technology/2017/10/create-vms-on-kvm-with-ansible/
-
-OS prep / install satellite software and settings:
-- https://github.com/oasis-roles/satellite
-- https://repo1.dsop.io/levelup-automation/systems/satellite
-- https://theforeman.org/plugins/foreman-ansible-modules/
-
-Content - manifest/products/repos:
-- https://repo1.dsop.io/levelup-automation/systems/satellite
-- https://theforeman.org/plugins/foreman-ansible-modules/
-
-Configuration:
-- https://theforeman.org/plugins/foreman-ansible-modules/
-- https://github.com/flyemsafe/redhat-satellite-quickstart
-- https://gitlab.sat.engineering.redhat.com/sthirugn/satellite_ansible_soe
-
+This role will register or unregister a system using `subscription-manager`, and can also enable or disable
+repositories available via subscription.
 
 Requirements
 ------------
@@ -73,52 +15,7 @@ Red Hat Enterprise Linux 7 or equivalent
 
 Valid Red Hat Subscriptions
 
-For a disconnected install, a local web server serving all required content that Satellite will need to import/sync:
-- "Red Hat Enterprise Linux 7 Server (RPMs)"
-- "Red Hat Enterprise Linux 7 Server - Optional (RPMs)"
-- "Red Hat Enterprise Linux 7 Server (Kickstart)"
-- "Red Hat Satellite Maintenance 6 (for RHEL 7 Server) (RPMs)"
-- "Red Hat Enterprise Linux 7 Server - Extras (RPMs)"
-- "Red Hat Satellite Tools 6.7 (for RHEL 7 Server) (RPMs)"
-- "Red Hat Satellite 6.7 (for RHEL 7 Server) (RPMs)"
-- "Red Hat Ansible Engine 2.8 RPMs for Red Hat Enterprise Linux 7 Server"
-- "EPEL 7"
-
-Needed for theforeman.foreman ansible modules to function on Satellite:
-- python2-apypie-0.2.1-1.el7.noarch.rpm
-- ansible-collection-theforeman-foreman-0.3.0-1.el7.noarch.rpm
-
-#### System Requirement
-- x86_64 architecture
-- The latest version of Red Hat Enterprise Linux 7 Server
-- 4-core 2.0 GHz CPU at a minimum
-- A minimum of 20 GB memory is required for Satellite Server to function. In addition, a minimum of 4 GB  of swap space is also recommended. Satellite running with less memory than the minimum value might not operate correctly.
-- A unique host name, which can contain lower-case letters, numbers, dots (.) and hyphens (-)
-- A current Red Hat Satellite subscription
-- Administrative user (root) access
-- A system umask of 0022
-- Full forward and reverse DNS resolution using a fully-qualified domain name
-- The Satellite 6 server and its capsules require disk IO to be at or above 60-80 Megabytes per second of average throughput for read operations. Anything below this value can have severe implications for the operation of the Satellite.
-
-Disk speed check:
-# foreman-maintain upgrade check --target-version 6.3.z
-...
-Check for recommended disk speed of pulp, mongodb, pgsql dir.:
-\ Finished                                                                      
-Disk speed : 80 MB/sec                                                [OK]
-or
-#  fio --name=job1 --rw=read --size=1g  --directory=/var --direct=1
-Run status group 0 (all jobs):
-   READ: bw=98.0MiB/s (104MB/s), 98.0MiB/s-98.0MiB/s (104MB/s-104MB/s), io=1024MiB (1074MB), run=10344-10344msec
-
-Information System requiments is found in the links below
-- [Connected Satellite](https://access.redhat.com/documentation/en-us/red_hat_satellite/6.7/html/installing_satellite_server_from_a_connected_network/index)
-- [Disconnected Satellite](https://access.redhat.com/documentation/en-us/red_hat_satellite/6.7/html/installing_satellite_server_from_a_disconnected_network/index)
-
-
-!!!!!!!!!!!!!! needs to be updated !!!!!!!!!!!!!
-
-Role Variables 
+Role Variables
 --------------
 
 Currently the following variables are supported:

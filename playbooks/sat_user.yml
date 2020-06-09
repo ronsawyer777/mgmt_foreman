@@ -1,0 +1,6 @@
+---
+- name: create User
+  hosts: mgmt
+  become: false
+  roles:
+   - {role: sat_user}

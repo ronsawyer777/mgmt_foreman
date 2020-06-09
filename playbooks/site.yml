@@ -1,0 +1,18 @@
+---
+- name: Create Satellite VM
+  hosts: kvm
+  become: false
+  roles:
+    - {role: sat_vm}
+
+- name: Install and configure Satellite
+  hosts: mgmt
+  roles:
+    - {role: sat_localrepo}
+    - {role: sat_yum_update}
+    - {role: sat_firewall}
+    - {role: sat_install}
+    - {role: sat_user}
+    - {role: sat_settings}
+    - {role: sat_content}
+    - {role: sat_config}

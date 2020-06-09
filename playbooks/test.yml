@@ -1,0 +1,5 @@
+---
+- hosts: mgmt
+  tasks:
+  - debug:
+      msg: "NOTE:  INSTALL_LOCATION in env.sh is set to [{{ lookup('env', 'INSTALL_LOCATION') }}]!!!"

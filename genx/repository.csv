@@ -1,0 +1,32 @@
+repository
+Id,Name,Product,Content Type,URL
+47,Puppet,Puppet,puppet,
+45,Red Hat Certificate System 9,Red Hat PKI Products,yum,http://nagios-mgmt-1/PKI_Repo/content/dist/rhel/server/7/7Server/x86_64/certificate-system/9/os/
+10,RedHat_CS,RedHat_CS,yum,http://mgmt-1.c3pki.nit.disa.mil/osimages/rhel5-rhcmsys
+24,RedHat_CS9,RedHat_CS9,yum,http://mgmt-1.c3pki.nit.disa.mil/osimages/rhel7-rhcmsys
+46,Red Hat Directory Server 10,Red Hat PKI Products,yum,http://nagios-mgmt-1/PKI_Repo/content/dist/rhel/server/7/7Server/x86_64/directoryserver/10/os
+11,RedHat_DS,RedHat_DS,yum,http://mgmt-1.c3pki.nit.disa.mil/osimages/rhel6-dirsrv
+48,Red Hat Enterprise Linux 5 Server - Extended Life Cycle Support RPMs x86_64,Red Hat Enterprise Linux Server - Extended Life Cycle Support,yum,http://nagios-mgmt-1/PKI_Repo//content/els/rhel/server/5/5Server/x86_64/os
+1,Red Hat Enterprise Linux 5 Server Kickstart x86_64 5.11,Red Hat Enterprise Linux Server,yum,http://mgmt-1.c3pki.nit.disa.mil/osimages/content/dist/rhel/server/5/5.11/x86_64/kickstart
+32,Red Hat Enterprise Linux 5 Server - RH Common RPMs x86_64 5Server,Red Hat Enterprise Linux Server,yum,http://nagios-mgmt-1/PKI_Repo//content/dist/rhel/server/5/5Server/x86_64/rh-common/os
+33,Red Hat Enterprise Linux 5 Server RPMs x86_64 5Server,Red Hat Enterprise Linux Server,yum,http://nagios-mgmt-1/PKI_Repo//content/dist/rhel/server/5/5Server/x86_64/os
+34,Red Hat Enterprise Linux 5 Server - Supplementary RPMs x86_64 5Server,Red Hat Enterprise Linux Server,yum,http://nagios-mgmt-1/PKI_Repo//content/dist/rhel/server/5/5Server/x86_64/supplementary/os
+5,Red Hat Enterprise Linux 6 Server Kickstart x86_64 6.6,Red Hat Enterprise Linux Server,yum,http://mgmt-1.c3pki.nit.disa.mil/osimages/content/dist/rhel/server/6/6.6/x86_64/kickstart
+35,Red Hat Enterprise Linux 6 Server - Optional RPMs x86_64 6Server,Red Hat Enterprise Linux Server,yum,http://nagios-mgmt-1/PKI_Repo//content/dist/rhel/server/6/6Server/x86_64/optional/os
+36,Red Hat Enterprise Linux 6 Server - RH Common RPMs x86_64 6Server,Red Hat Enterprise Linux Server,yum,http://nagios-mgmt-1/PKI_Repo//content/dist/rhel/server/6/6Server/x86_64/rh-common/os
+37,Red Hat Enterprise Linux 6 Server RPMs x86_64 6Server,Red Hat Enterprise Linux Server,yum,http://nagios-mgmt-1/PKI_Repo//content/dist/rhel/server/6/6Server/x86_64/os
+38,Red Hat Enterprise Linux 6 Server - Supplementary RPMs x86_64 6Server,Red Hat Enterprise Linux Server,yum,http://nagios-mgmt-1/PKI_Repo//content/dist/rhel/server/6/6Server/x86_64/supplementary/os
+19,Red Hat Enterprise Linux 7 Server Kickstart x86_64 7.1,Red Hat Enterprise Linux Server,yum,http://mgmt-1.c3pki.nit.disa.mil/osimages/content/dist/rhel/server/7/7.1/x86_64/kickstart
+25,Red Hat Enterprise Linux 7 Server Kickstart x86_64 7.2,Red Hat Enterprise Linux Server,yum,http://mgmt-1.c3pki.nit.disa.mil/osimages/content/dist/rhel/server/7/7.2/x86_64/kickstart
+43,Red Hat Enterprise Linux 7 Server Kickstart x86_64 7.4,Red Hat Enterprise Linux Server,yum,http://nagios-mgmt-1/PKI_Repo//content/dist/rhel/server/7/7.4/x86_64/kickstart
+44,Red Hat Enterprise Linux 7 Server Kickstart x86_64 7.5,Red Hat Enterprise Linux Server,yum,http://nagios-mgmt-1/PKI_Repo//content/dist/rhel/server/7/7.5/x86_64/kickstart
+39,Red Hat Enterprise Linux 7 Server - Optional RPMs x86_64 7Server,Red Hat Enterprise Linux Server,yum,http://nagios-mgmt-1/PKI_Repo//content/dist/rhel/server/7/7Server/x86_64/optional/os
+40,Red Hat Enterprise Linux 7 Server - RH Common RPMs x86_64 7Server,Red Hat Enterprise Linux Server,yum,http://nagios-mgmt-1/PKI_Repo//content/dist/rhel/server/7/7Server/x86_64/rh-common/os
+41,Red Hat Enterprise Linux 7 Server RPMs x86_64 7Server,Red Hat Enterprise Linux Server,yum,http://nagios-mgmt-1/PKI_Repo//content/dist/rhel/server/7/7Server/x86_64/os
+42,Red Hat Enterprise Linux 7 Server - Supplementary RPMs x86_64 7Server,Red Hat Enterprise Linux Server,yum,http://nagios-mgmt-1/PKI_Repo//content/dist/rhel/server/7/7Server/x86_64/supplementary/os
+9,Red Hat Satellite 6.1 for RHEL 6 Server RPMs x86_64,Red Hat Satellite,yum,http://mgmt-1.c3pki.nit.disa.mil/osimages/content/dist/rhel/server/6/6Server/x86_64/satellite/6.1/os
+49,Red Hat Software Collections RPMs for Red Hat Enterprise Linux 6 Server x86_64 6Server,Red Hat Software Collections for RHEL Server,yum,http://nagios-mgmt-1/PKI_Repo//content/dist/rhel/server/6/6Server/x86_64/rhscl/1/os
+50,Red Hat Software Collections RPMs for Red Hat Enterprise Linux 7 Server x86_64 7Server,Red Hat Software Collections for RHEL Server,yum,http://nagios-mgmt-1/PKI_Repo//content/dist/rhel/server/7/7Server/x86_64/rhscl/1/os
+12,RHEL_5_DoDPKI,RHEL_5_DoDPKI,yum,
+13,RHEL_6_DoDPKI,RHEL_6_DoDPKI,yum,
+23,RHEL_7_DoDPKI,RHEL_7_DoDPKI,yum,http://mgmt-1.eng.disa.mil/osimages/rhel7-dodpki/x86_64

@@ -1,0 +1,41 @@
+---
+# tasks file for sat_config
+### content views
+#- name: "config_content_views | remove content views"
+#  katello_content_view:
+#    username: "{{ foreman_initial_admin_username }}"
+#    password: "{{ foreman_initial_admin_password }}"
+#    server_url: "{{ satellite_url }}"
+#    name: "{{ item.name }}"
+#    organization: "{{ foreman_initial_organization }}"
+#    repositories: "{{ item.repositories }}"
+#    state: absent
+#  with_items: "{{ content_views }}"
+
+- name: "config_content_views | Create or update content views"
+  katello_content_view:
+    username: "{{ foreman_initial_admin_username }}"
+    password: "{{ foreman_initial_admin_password }}"
+    server_url: "{{ satellite_url }}"
+    name: "{{ item.name }}"
+    organization: "{{ foreman_initial_organization }}"
+    repositories: "{{ item.repositories }}"
+  with_items: "{{ content_views }}"
+  notify: handler - publish content views
+
+- meta: flush_handlers
+
+- name: "config_content_views | Create a composite content view"
+  katello_content_view:
+    username: "{{ foreman_initial_admin_username }}"
+    password: "{{ foreman_initial_admin_password }}"
+    server_url: "{{ satellite_url }}"
+    name: "{{ item.name }}"
+    organization: "{{ foreman_initial_organization }}"
+    composite: true
+    auto_publish: true
+    components: "{{ item.components }}"
+  with_items: "{{ composite_content_views }}"
+  notify: handler - publish composite content views
+
+- meta: flush_handlers

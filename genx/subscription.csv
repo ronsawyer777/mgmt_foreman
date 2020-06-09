@@ -1,0 +1,16 @@
+subscription
+Name,Contract,Account,Support,Quantity,Consumed,End Date,ID,Product,Quantity,Attached
+Puppet,,,"",-1,0,2048-10-03,8a8193956644f740016660ec9e1c0835,Puppet,-1,0
+RHEL_5_DoDPKI,,,"",-1,1,2046-02-12,8a8193955300a6b6015300b79f49025b,RHEL_5_DoDPKI,-1,1
+RHEL_6_DoDPKI,,,"",-1,21,2046-02-12,8a8193955300a6b6015300b7b43a0261,RHEL_6_DoDPKI,-1,21
+RHEL_7_DoDPKI,,,"",-1,14,2046-10-19,8a81939558020cce0158027d99d80040,RHEL_7_DoDPKI,-1,14
+Red Hat Enterprise Linux Extended Life Cycle Support (Physical or Virtual Nodes),12059986,670852,Layered,10,2,2020-12-01,8a8193956ead9dbf016edd2917d31f57,Red Hat Enterprise Linux Extended Life Cycle Support (Physical or Virtual Nodes),10,2
+"Red Hat Enterprise Linux with Smart Virtualization and Smart Management + Satellite, Standard (2 Sockets)",12059986,670852,Standard,-1,0,2020-12-01,8a8193956ead9dbf016edeb6d1de2197,"Red Hat Enterprise Linux with Smart Virtualization and Smart Management + Satellite, Standard (2 Sockets)",-1,0
+"Red Hat Enterprise Linux with Smart Virtualization and Smart Management + Satellite, Standard (2 Sockets)",12059986,670852,Standard,-1,1,2020-12-01,8a8193956ead9dbf016eddbc68512032,"Red Hat Enterprise Linux with Smart Virtualization and Smart Management + Satellite, Standard (2 Sockets)",-1,1
+"Red Hat Enterprise Linux with Smart Virtualization and Smart Management + Satellite, Standard (2 Sockets)",12059986,670852,Standard,40,29,2020-12-01,8a8193956ead9dbf016edd2911d91ef9,"Red Hat Enterprise Linux with Smart Virtualization and Smart Management + Satellite, Standard (2 Sockets)",40,29
+"Red Hat JBoss Enterprise Application Platform, 16-Core Standard",12059986,670852,Standard,1,0,2020-12-01,8a8193956ead9dbf016edd290e351ed7,"Red Hat JBoss Enterprise Application Platform, 16-Core Standard",1,0
+Red Hat PKI Products,,,"",-1,1,2048-09-26,8a819395663ef5d501663f862d300058,Red Hat PKI Products,-1,1
+Red Hat Satellite Infrastructure Subscription,,670852,Premium,1,1,2020-12-01,8a8193956ead9dbf016edd291e2b1f70,Red Hat Satellite Infrastructure Subscription,1,1
+RedHat_CS,,,"",-1,0,2046-02-12,8a8193955300a6b6015300b783310255,RedHat_CS,-1,0
+RedHat_CS9,,,"",-1,4,2046-10-19,8a81939558020cce0158027de3c50047,RedHat_CS9,-1,4
+RedHat_DS,,,"",-1,4,2046-02-12,8a8193955300a6b6015300b76cf0024f,RedHat_DS,-1,4

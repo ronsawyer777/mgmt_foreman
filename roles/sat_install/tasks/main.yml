@@ -1,0 +1,38 @@
+---
+- name: main | ensure that foreman_initial_admin_password is defined - {{ foreman_initial_location }}
+  fail:
+    msg: You must provide an admin password for satellite
+  when: foreman_initial_admin_password is not defined
+
+- name: main | ensure the satellite server meets the documented requirements - {{ foreman_initial_location }}
+  include_tasks: pre-flight-checklist.yml
+  when: sat_precheck
+
+- name: main | install theforeman ansible modules and python apypie rpms - {{ foreman_initial_location }}
+  yum:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ theforeman_packages }}"
+
+- name: main | install satellite package - {{ foreman_initial_location }}
+  package:
+    name: "{{ satellite_packages }}"
+    state: present
+
+- name: main | upload answers file - {{ foreman_initial_location }}
+  template:
+    src: satellite-answers.yaml
+    dest: "{{ satellite_answers_file_destination }}"
+    owner: root
+    group: root
+    mode: 0600
+  notify: run satellite installer
+
+- name: main | edit scenario file - {{ foreman_initial_location }}
+  lineinfile:
+    dest: "{{ satellite_scenario_location }}"
+    line: ":answer_file: {{ satellite_answers_file_destination }}"
+    regexp: ":answer_file: .*"
+  notify: run satellite installer
+
+- meta: flush_handlers

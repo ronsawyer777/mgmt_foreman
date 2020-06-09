@@ -1,0 +1,8 @@
+medium
+Id,Name,Path
+8,PKI/Library/Red_Hat_Server/Red_Hat_Enterprise_Linux_6_Server_Kickstart_x86_64_6_6,http://mgmt-1.c3pki.nit.disa.mil/pulp/repos/PKI/Library/content/dist/rhel/server/6/6.6/x86_64/kickstart/
+9,PKI/Library/Red_Hat_Server/Red_Hat_Enterprise_Linux_7_Server_Kickstart_x86_64_7_1,http://mgmt-1.c3pki.nit.disa.mil/pulp/repos/PKI/Library/content/dist/rhel/server/7/7.1/x86_64/kickstart/
+10,PKI/Library/Red_Hat_Server/Red_Hat_Enterprise_Linux_7_Server_Kickstart_x86_64_7_2,http://mgmt-1.c3pki.nit.disa.mil/pulp/repos/PKI/Library/content/dist/rhel/server/7/7.2/x86_64/kickstart/
+11,PKI/Library/Red_Hat_Server/Red_Hat_Enterprise_Linux_7_Server_Kickstart_x86_64_7_4,http://mgmt-1.c3pki.nit.disa.mil/pulp/repos/PKI/Library/content/dist/rhel/server/7/7.4/x86_64/kickstart/
+12,PKI/Library/Red_Hat_Server/Red_Hat_Enterprise_Linux_7_Server_Kickstart_x86_64_7_5,http://mgmt-1.c3pki.nit.disa.mil/pulp/repos/PKI/Library/content/dist/rhel/server/7/7.5/x86_64/kickstart/
+7,RHEL,http://mgmt-1.c3pki.nit.disa.mil/pulp/repos/PKI/Library/content/dist/rhel/server/$major/$major.$minor/$arch/kickstart

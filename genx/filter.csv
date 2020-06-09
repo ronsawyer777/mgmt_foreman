@@ -1,0 +1,244 @@
+filter
+Id,Resource type,Search,Unlimited?,Role,Permissions
+1,ForemanTasks::Task,none,true,Tasks Manager,"view_foreman_tasks, edit_foreman_tasks"
+2,ForemanTasks::Task,none,true,Tasks Reader,view_foreman_tasks
+3,Location,none,true,Discovery Reader,view_locations
+4,Organization,none,true,Discovery Reader,view_organizations
+5,Host,none,true,Discovery Reader,view_discovered_hosts
+6,DiscoveryRule,none,true,Discovery Reader,view_discovery_rules
+7,Location,none,true,Discovery Manager,"view_locations, assign_locations"
+8,Organization,none,true,Discovery Manager,"view_organizations, assign_organizations"
+9,Host,none,true,Discovery Manager,"destroy_discovered_hosts, edit_discovered_hosts, provision_discovered_hosts, auto_provision_discovered_hosts, submit_discovered_hosts, view_discovered_hosts"
+10,DiscoveryRule,none,true,Discovery Manager,"view_discovery_rules, create_discovery_rules, edit_discovery_rules, execute_discovery_rules, destroy_discovery_rules"
+11,(Miscellaneous),none,true,Boot disk access,download_bootdisk
+12,(Miscellaneous),none,true,Red Hat Access Logs,"view_log_viewer, logs"
+13,(Miscellaneous),none,true,Access Insights Viewer,"rh_telemetry_api, rh_telemetry_view"
+14,(Miscellaneous),none,true,Access Insights Admin,"rh_telemetry_api, rh_telemetry_view, rh_telemetry_configurations"
+15,Architecture,none,true,Manager,"view_architectures, create_architectures, edit_architectures, destroy_architectures"
+16,Audit,none,true,Manager,view_audit_logs
+17,AuthSourceLdap,none,true,Manager,"view_authenticators, create_authenticators, edit_authenticators, destroy_authenticators"
+18,Bookmark,none,true,Manager,"view_bookmarks, create_bookmarks, edit_bookmarks, destroy_bookmarks"
+19,ComputeResource,none,true,Manager,"console_compute_resources_vms, power_compute_resources_vms, destroy_compute_resources_vms, edit_compute_resources_vms, create_compute_resources_vms, view_compute_resources_vms, destroy_compute_resources, edit_compute_resources, create_compute_resources, view_compute_resources"
+20,ConfigTemplate,none,true,Manager,"view_templates, create_templates, edit_templates, destroy_templates, deploy_templates"
+21,(Miscellaneous),none,true,Manager,"access_dashboard, view_plugins, access_settings, view_statistics, view_tasks"
+22,Domain,none,true,Manager,"view_domains, create_domains, edit_domains, destroy_domains"
+23,Environment,none,true,Manager,"view_environments, create_environments, edit_environments, destroy_environments, import_environments"
+24,LookupKey,none,true,Manager,"view_external_variables, create_external_variables, edit_external_variables, destroy_external_variables"
+25,FactValue,none,true,Manager,"view_facts, upload_facts"
+26,CommonParameter,none,true,Manager,"view_globals, create_globals, edit_globals, destroy_globals"
+27,HostClass,none,true,Manager,edit_classes
+28,Parameter,none,true,Manager,"create_params, edit_params, destroy_params"
+29,Hostgroup,none,true,Manager,"view_hostgroups, create_hostgroups, edit_hostgroups, destroy_hostgroups"
+30,Host,none,true,Manager,"puppetrun_hosts, ipmi_boot, console_hosts, power_hosts, build_hosts, destroy_hosts, edit_hosts, create_hosts, view_hosts"
+31,Image,none,true,Manager,"view_images, create_images, edit_images, destroy_images"
+32,Location,none,true,Manager,"view_locations, create_locations, edit_locations, destroy_locations, assign_locations"
+33,MailNotification,none,true,Manager,view_mail_notifications
+34,Medium,none,true,Manager,"view_media, create_media, edit_media, destroy_media"
+35,Model,none,true,Manager,"view_models, create_models, edit_models, destroy_models"
+36,Operatingsystem,none,true,Manager,"view_operatingsystems, create_operatingsystems, edit_operatingsystems, destroy_operatingsystems"
+37,Organization,none,true,Manager,"view_organizations, create_organizations, edit_organizations, destroy_organizations, assign_organizations"
+38,Ptable,none,true,Manager,"view_ptables, create_ptables, edit_ptables, destroy_ptables"
+39,Puppetclass,none,true,Manager,"view_puppetclasses, create_puppetclasses, edit_puppetclasses, destroy_puppetclasses, import_puppetclasses"
+40,Realm,none,true,Manager,"view_realms, create_realms, edit_realms, destroy_realms"
+41,Report,none,true,Manager,"view_reports, destroy_reports, upload_reports"
+42,SmartProxy,none,true,Manager,"destroy_smart_proxies_puppetca, edit_smart_proxies_puppetca, view_smart_proxies_puppetca, destroy_smart_proxies_autosign, create_smart_proxies_autosign, view_smart_proxies_autosign, destroy_smart_proxies, edit_smart_proxies, create_smart_proxies, view_smart_proxies"
+43,Subnet,none,true,Manager,"view_subnets, create_subnets, edit_subnets, destroy_subnets, import_subnets"
+44,Trend,none,true,Manager,"view_trends, create_trends, edit_trends, destroy_trends, update_trends"
+45,Usergroup,none,true,Manager,"view_usergroups, create_usergroups, edit_usergroups, destroy_usergroups"
+46,User,none,true,Manager,"view_users, create_users, edit_users, destroy_users"
+47,Ptable,none,true,Edit partition tables,"view_ptables, create_ptables, edit_ptables, destroy_ptables"
+48,Host,none,true,View hosts,view_hosts
+49,Host,none,true,Edit hosts,"view_hosts, create_hosts, edit_hosts, destroy_hosts, build_hosts"
+50,Architecture,none,true,Viewer,view_architectures
+51,Audit,none,true,Viewer,view_audit_logs
+52,AuthSourceLdap,none,true,Viewer,view_authenticators
+53,Bookmark,none,true,Viewer,view_bookmarks
+54,ComputeProfile,none,true,Viewer,view_compute_profiles
+55,ComputeResource,none,true,Viewer,"view_compute_resources, view_compute_resources_vms"
+56,ConfigTemplate,none,true,Viewer,view_templates
+57,ConfigGroup,none,true,Viewer,view_config_groups
+58,(Miscellaneous),none,true,Viewer,"rh_telemetry_view, view_log_viewer, view_cases, view_search, view_tasks, view_statistics, access_settings, view_plugins, access_dashboard"
+59,Domain,none,true,Viewer,view_domains
+60,Environment,none,true,Viewer,view_environments
+61,ExternalUsergroups,none,true,Viewer,view_external_usergroups
+62,LookupKey,none,true,Viewer,view_external_variables
+63,FactValue,none,true,Viewer,view_facts
+64,Filter,none,true,Viewer,view_filters
+65,CommonParameter,none,true,Viewer,view_globals
+66,Hostgroup,none,true,Viewer,view_hostgroups
+67,Host,none,true,Viewer,"view_hosts, view_discovered_hosts"
+68,Image,none,true,Viewer,view_images
+69,Location,none,true,Viewer,view_locations
+70,MailNotification,none,true,Viewer,view_mail_notifications
+71,Medium,none,true,Viewer,view_media
+72,Model,none,true,Viewer,view_models
+73,Operatingsystem,none,true,Viewer,view_operatingsystems
+74,Organization,none,true,Viewer,"view_organizations, view_subscriptions"
+75,Ptable,none,true,Viewer,view_ptables
+76,Puppetclass,none,true,Viewer,view_puppetclasses
+77,Realm,none,true,Viewer,view_realms
+78,Report,none,true,Viewer,view_reports
+79,Role,none,true,Viewer,view_roles
+80,SmartProxy,none,true,Viewer,"view_smart_proxies, view_smart_proxies_autosign, view_smart_proxies_puppetca"
+81,Subnet,none,true,Viewer,view_subnets
+82,Trend,none,true,Viewer,view_trends
+83,Usergroup,none,true,Viewer,view_usergroups
+84,User,none,true,Viewer,view_users
+85,ForemanTasks::Task,none,true,Viewer,view_foreman_tasks
+86,Container,none,true,Viewer,view_containers
+87,DockerRegistry,none,true,Viewer,view_registries
+88,Katello::System,none,true,Viewer,view_content_hosts
+89,Katello::GpgKey,none,true,Viewer,view_gpg_keys
+90,Katello::ContentView,none,true,Viewer,"promote_or_remove_content_views, publish_content_views, destroy_content_views, edit_content_views, create_content_views, view_content_views"
+91,Katello::SyncPlan,none,true,Viewer,view_sync_plans
+92,Katello::HostCollection,none,true,Viewer,view_host_collections
+93,Katello::ActivationKey,none,true,Viewer,view_activation_keys
+94,Katello::KTEnvironment,none,true,Viewer,"view_lifecycle_environments, promote_or_remove_content_views_to_environments"
+95,Katello::Product,none,true,Viewer,view_products
+96,DiscoveryRule,none,true,Viewer,view_discovery_rules
+144,Organization,none,true,Viewer,view_subscriptions
+145,Katello::System,none,true,Viewer,view_content_hosts
+146,Katello::GpgKey,none,true,Viewer,view_gpg_keys
+147,Katello::ContentView,none,true,Viewer,view_content_views
+148,Katello::SyncPlan,none,true,Viewer,view_sync_plans
+149,Katello::HostCollection,none,true,Viewer,view_host_collections
+150,Katello::ActivationKey,none,true,Viewer,view_activation_keys
+151,Katello::KTEnvironment,none,true,Viewer,view_lifecycle_environments
+152,Katello::Product,none,true,Viewer,view_products
+153,Organization,none,true,Viewer,view_subscriptions
+154,Katello::System,none,true,Viewer,view_content_hosts
+155,Katello::GpgKey,none,true,Viewer,view_gpg_keys
+156,Katello::ContentView,none,true,Viewer,view_content_views
+157,Katello::SyncPlan,none,true,Viewer,view_sync_plans
+158,Katello::HostCollection,none,true,Viewer,view_host_collections
+159,Katello::ActivationKey,none,true,Viewer,view_activation_keys
+160,Katello::KTEnvironment,none,true,Viewer,view_lifecycle_environments
+161,Katello::Product,none,true,Viewer,view_products
+162,Organization,none,true,Viewer,view_subscriptions
+163,Katello::System,none,true,Viewer,view_content_hosts
+164,Katello::GpgKey,none,true,Viewer,view_gpg_keys
+165,Katello::ContentView,none,true,Viewer,view_content_views
+166,Katello::SyncPlan,none,true,Viewer,view_sync_plans
+167,Katello::HostCollection,none,true,Viewer,view_host_collections
+168,Katello::ActivationKey,none,true,Viewer,view_activation_keys
+169,Katello::KTEnvironment,none,true,Viewer,view_lifecycle_environments
+170,Katello::Product,none,true,Viewer,view_products
+171,Organization,none,true,Viewer,view_subscriptions
+172,Katello::System,none,true,Viewer,view_content_hosts
+173,Katello::GpgKey,none,true,Viewer,view_gpg_keys
+174,Katello::ContentView,none,true,Viewer,view_content_views
+175,Katello::SyncPlan,none,true,Viewer,view_sync_plans
+176,Katello::HostCollection,none,true,Viewer,view_host_collections
+177,Katello::ActivationKey,none,true,Viewer,view_activation_keys
+178,Katello::KTEnvironment,none,true,Viewer,view_lifecycle_environments
+179,Katello::Product,none,true,Viewer,view_products
+180,Organization,none,true,Viewer,view_subscriptions
+181,Katello::System,none,true,Viewer,view_content_hosts
+182,Katello::GpgKey,none,true,Viewer,view_gpg_keys
+183,Katello::ContentView,none,true,Viewer,view_content_views
+184,Katello::SyncPlan,none,true,Viewer,view_sync_plans
+185,Katello::HostCollection,none,true,Viewer,view_host_collections
+186,Katello::ActivationKey,none,true,Viewer,view_activation_keys
+187,Katello::KTEnvironment,none,true,Viewer,view_lifecycle_environments
+188,Katello::Product,none,true,Viewer,view_products
+189,Organization,none,true,Viewer,view_subscriptions
+190,Katello::System,none,true,Viewer,view_content_hosts
+191,Katello::GpgKey,none,true,Viewer,view_gpg_keys
+192,Katello::ContentView,none,true,Viewer,view_content_views
+193,Katello::SyncPlan,none,true,Viewer,view_sync_plans
+194,Katello::HostCollection,none,true,Viewer,view_host_collections
+195,Katello::ActivationKey,none,true,Viewer,view_activation_keys
+196,Katello::KTEnvironment,none,true,Viewer,view_lifecycle_environments
+197,Katello::Product,none,true,Viewer,view_products
+198,Organization,none,true,Viewer,view_subscriptions
+199,Katello::System,none,true,Viewer,view_content_hosts
+200,Katello::GpgKey,none,true,Viewer,view_gpg_keys
+201,Katello::ContentView,none,true,Viewer,view_content_views
+202,Katello::SyncPlan,none,true,Viewer,view_sync_plans
+203,Katello::HostCollection,none,true,Viewer,view_host_collections
+204,Katello::ActivationKey,none,true,Viewer,view_activation_keys
+205,Katello::KTEnvironment,none,true,Viewer,view_lifecycle_environments
+206,Katello::Product,none,true,Viewer,view_products
+207,Organization,none,true,Viewer,view_subscriptions
+208,Katello::System,none,true,Viewer,view_content_hosts
+209,Katello::GpgKey,none,true,Viewer,view_gpg_keys
+210,Katello::ContentView,none,true,Viewer,view_content_views
+211,Katello::SyncPlan,none,true,Viewer,view_sync_plans
+212,Katello::HostCollection,none,true,Viewer,view_host_collections
+213,Katello::ActivationKey,none,true,Viewer,view_activation_keys
+214,Katello::KTEnvironment,none,true,Viewer,view_lifecycle_environments
+215,Katello::Product,none,true,Viewer,view_products
+216,Organization,none,true,Viewer,view_subscriptions
+217,Katello::System,none,true,Viewer,view_content_hosts
+218,Katello::GpgKey,none,true,Viewer,view_gpg_keys
+219,Katello::ContentView,none,true,Viewer,view_content_views
+220,Katello::SyncPlan,none,true,Viewer,view_sync_plans
+221,Katello::HostCollection,none,true,Viewer,view_host_collections
+222,Katello::ActivationKey,none,true,Viewer,view_activation_keys
+223,Katello::KTEnvironment,none,true,Viewer,view_lifecycle_environments
+224,Katello::Product,none,true,Viewer,view_products
+225,Organization,none,true,Viewer,view_subscriptions
+226,Katello::System,none,true,Viewer,view_content_hosts
+227,Katello::GpgKey,none,true,Viewer,view_gpg_keys
+228,Katello::ContentView,none,true,Viewer,view_content_views
+229,Katello::SyncPlan,none,true,Viewer,view_sync_plans
+230,Katello::HostCollection,none,true,Viewer,view_host_collections
+231,Katello::ActivationKey,none,true,Viewer,view_activation_keys
+232,Katello::KTEnvironment,none,true,Viewer,view_lifecycle_environments
+233,Katello::Product,none,true,Viewer,view_products
+234,Organization,none,true,Viewer,view_subscriptions
+235,Katello::System,none,true,Viewer,view_content_hosts
+236,Katello::GpgKey,none,true,Viewer,view_gpg_keys
+237,Katello::ContentView,none,true,Viewer,view_content_views
+238,Katello::SyncPlan,none,true,Viewer,view_sync_plans
+239,Katello::HostCollection,none,true,Viewer,view_host_collections
+240,Katello::ActivationKey,none,true,Viewer,view_activation_keys
+241,Katello::KTEnvironment,none,true,Viewer,view_lifecycle_environments
+242,Katello::Product,none,true,Viewer,view_products
+97,Architecture,none,true,Site manager,view_architectures
+98,Audit,none,true,Site manager,view_audit_logs
+99,AuthSourceLdap,none,true,Site manager,view_authenticators
+100,(Miscellaneous),none,true,Site manager,"access_dashboard, access_settings, view_statistics"
+101,Domain,none,true,Site manager,view_domains
+102,Environment,none,true,Site manager,"view_environments, import_environments"
+103,LookupKey,none,true,Site manager,"view_external_variables, create_external_variables, edit_external_variables, destroy_external_variables"
+104,FactValue,none,true,Site manager,view_facts
+105,CommonParameter,none,true,Site manager,view_globals
+106,Hostgroup,none,true,Site manager,view_hostgroups
+107,Host,none,true,Site manager,"view_hosts, create_hosts, edit_hosts, destroy_hosts, build_hosts"
+108,MailNotification,none,true,Site manager,view_mail_notifications
+109,Medium,none,true,Site manager,"view_media, create_media, edit_media, destroy_media"
+110,Model,none,true,Site manager,view_models
+111,Operatingsystem,none,true,Site manager,view_operatingsystems
+112,Ptable,none,true,Site manager,view_ptables
+113,Puppetclass,none,true,Site manager,"view_puppetclasses, import_puppetclasses"
+114,Realm,none,true,Site manager,view_realms
+115,Report,none,true,Site manager,"view_reports, destroy_reports"
+116,SmartProxy,none,true,Site manager,"view_smart_proxies, edit_smart_proxies, view_smart_proxies_autosign, view_smart_proxies_puppetca"
+117,Subnet,none,true,Site manager,"view_subnets, edit_subnets"
+118,Usergroup,none,true,Site manager,"view_usergroups, create_usergroups, edit_usergroups, destroy_usergroups"
+119,User,none,true,Site manager,"view_users, edit_users"
+120,Architecture,none,true,Default user,view_architectures
+121,AuthSourceLdap,none,true,Default user,view_authenticators
+122,(Miscellaneous),none,true,Default user,"access_dashboard, access_settings, view_statistics"
+123,Domain,none,true,Default user,view_domains
+124,Environment,none,true,Default user,view_environments
+125,LookupKey,none,true,Default user,view_external_variables
+126,FactValue,none,true,Default user,view_facts
+127,CommonParameter,none,true,Default user,view_globals
+128,Hostgroup,none,true,Default user,view_hostgroups
+129,Host,none,true,Default user,view_hosts
+130,Location,none,true,Default user,view_locations
+131,MailNotification,none,true,Default user,view_mail_notifications
+132,Medium,none,true,Default user,view_media
+133,Model,none,true,Default user,view_models
+134,Operatingsystem,none,true,Default user,view_operatingsystems
+135,Organization,none,true,Default user,view_organizations
+136,Ptable,none,true,Default user,view_ptables
+137,Puppetclass,none,true,Default user,view_puppetclasses
+138,Realm,none,true,Default user,view_realms
+139,Report,none,true,Default user,view_reports
+140,Subnet,none,true,Default user,view_subnets
+141,Bookmark,none,true,Anonymous,view_bookmarks
+142,(Miscellaneous),none,true,Anonymous,view_tasks
+143,ForemanTasks::Task,owner.id = current_user,false,Anonymous,view_foreman_tasks

@@ -1,0 +1,18 @@
+role
+Id,Name
+1,Tasks Manager
+2,Tasks Reader
+3,Discovery Reader
+4,Discovery Manager
+5,Boot disk access
+6,Red Hat Access Logs
+7,Access Insights Viewer
+8,Access Insights Admin
+9,Manager
+10,Edit partition tables
+11,View hosts
+12,Edit hosts
+13,Viewer
+14,Site manager
+15,Default user
+16,Anonymous

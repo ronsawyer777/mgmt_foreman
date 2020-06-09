@@ -1,0 +1,554 @@
+---
+hostname: mgmt-f
+svc_user: ansible_svc
+svc_password: $6$uQlPlCYx/Qgzlp9Z$o8OD4/s4FBhLAOePs0xauVf2rQi2kdDVlGIgmK81wJ7rFkiuw9zHtb3j9p5sYx6yEyBJ3PEA4/quyH33elQkk.
+satellite_url: "https://{{ ansible_fqdn }}"
+content_source: 'http://192.168.122.1'
+satellite_manifest_src: "manifest_RONTEST.zip"
+satellite_manifest_dest: "/opt/satellite_manifest.zip"
+satellite_fw_service_name: RH-Satellite-6
+server_basearch: "x86_64"
+kickstart_repository: "Red Hat Enterprise Linux 7 Server Kickstart x86_64 7.7"
+partition_table_name: "Kickstart default"
+operatingsystem: "RedHat 7.7"
+server_releasever: "7Server"
+satellite_deployment_version: "6.7"
+rhn_connect: "disconnect"
+prod_lifecycle_env: "Production"
+sat_precheck: true
+install_theforeman_module: true
+domain: "{{ ansible_domain }}"
+mgmtsubnet: "PKI-Management"
+network: "{{ ansible_default_ipv4.network }}"
+mask: "{{ ansible_default_ipv4.netmask }}"
+account_id: "{{ lookup('env','SAT_ACCOUNT_ID') | default('000000') }}"
+rhn_activation_key: "{{ lookup('env','RHN_AK') }}"
+rhn_org: "{{ lookup('env','RHN_ORG')}}"
+manifest_uuid: "{{ lookup('env', 'MANIFEST_UUID') }}"
+
+sync_plans_name: 'Weekly_Midnight_Sync'
+sync_plans_interval: weekly
+sync_plans_time: '2020/05/01 08:00:00'
+sync_plan_enabled: true
+
+satellite_enable_ssl: true
+satellite_ssl_port: 443
+satellite_http_port: 80
+satellite_proxy_http_port: 8000
+satellite_proxy_http: true
+satellite_proxy_ssl_port: 9090
+satellite_proxy_ssl: true
+satellite_puppet_port: 8140
+satellite_answers_file_destination: >-
+  /etc/foreman-installer/scenarios.d/satellite-answers.yaml
+satellite_compute_ec2: false
+satellite_compute_gce: false
+satellite_compute_libvirt: true
+satellite_compute_openstack: false
+satellite_compute_ovirt: false
+satellite_compute_rackspace: false
+satellite_compute_vmware: false
+satellite_fqdn: "{{ ansible_fqdn }}"
+satellite_ip: "{{ ansible_default_ipv4.address }}"
+
+settings_content_disconnected: true
+settings_entries_per_page: 100
+settings_unregister_delete_host: true
+settings_errata_status_installable: true
+settings_login_text: "I've read & consent to terms in DISA user agreement."
+settings_name_generator_type: "Off"
+settings_default_download_policy: immeadiate
+
+foreman_initial_admin_username: "{{ lookup('env','FOREMAN_USER') }}"
+foreman_initial_admin_password: "{{ lookup('env','FOREMAN_PASSWORD') }}"
+foreman_initial_organization: "{{ lookup('env','INITIAL_ORGANIZATION') }}"
+foreman_initial_location: "{{ lookup('env','INITIAL_LOCATION') }}"
+
+foreman_proxy_dns_managed: true
+foreman_proxy_dns: true
+foreman_proxy_dns_interface: "{{ ansible_default_ipv4.interface }}"  # eth0
+foreman_proxy_dns_zone: "{{ ansible_domain }}"  # rlslab.com
+foreman_proxy_dns_principle: "{{ ansible_domain | upper }}"  # RLSLAB.COM
+foreman_proxy_dns_forwarders: "{{ ansible_dns.nameservers[0] }}"  # 192.168.122.1?
+foreman_proxy_dns_reverse: "{{ ansible_default_ipv4.address | ipaddr('revdns') | regex_replace('^[0-9]+\\.', '') | regex_replace('\\.$') }}"  # 122.168.192.in_addr.arpa
+foreman_proxy_dhcp: true
+foreman_proxy_dhcp_managed: true
+foreman_proxy_dhcp_interface: "{{ ansible_default_ipv4.interface }}"  # eth0
+foreman_proxy_dhcp_fromip: "192.168.122.100"
+foreman_proxy_dhcp_toip: "192.168.122.150"
+foreman_proxy_dhcp_range: "{{ foreman_proxy_dhcp_fromip }} {{ foreman_proxy_dhcp_toip }}"
+foreman_proxy_dhcp_gateway: "{{ ansible_default_ipv4.gateway }}"  # 192.168.122.1
+foreman_proxy_dhcp_nameservers: "{{ ansible_dns.nameservers[0] }}"  # 192.168.122.1?
+foreman_proxy_dhcp_domain: "{{ ansible_domain }}"  # rlslab.com
+foreman_proxy_tftp: true
+foreman_proxy_tftp_managed: true
+foreman_proxy_tftp_servername: "{{ ansible_fqdn }}"
+
+# vars file for prefab-role
+rpm_gpg_key_epel_7: /opt/rpm_gpg_key_epel_7
+rpm_gpg_key_gitlab: /opt/rpm_gpg_key_gitlab
+RHSCL_product: "Red Hat Software Collections (for RHEL Server)"
+RHSCL_name: "Red Hat Software Collections RPMs for Red Hat Enterprise Linux 7 Server"
+
+satellite_repos:
+  - name: rhel-7-server-satellite-{{satellite_deployment_version}}-rpms
+  - name: rhel-7-server-rpms
+  - name: rhel-server-rhscl-7-rpms
+  - name: rhel-7-server-satellite-maintenance-6-rpms
+  - name: rhel-7-server-ansible-2.8-rpms
+
+theforeman_packages:
+  - "{{ content_source }}/pub/python2-apypie-0.2.1-1.el7.noarch.rpm"
+  - "{{ content_source }}/pub/ansible-collection-theforeman-foreman-0.3.0-1.el7.noarch.rpm"
+
+satellite_scenario_location: /etc/foreman-installer/scenarios.d/satellite.yaml
+
+satellite_packages:
+  - satellite
+  - chrony
+  - sos
+  - puppet-foreman_scap_client
+  - scap-security-guide
+  - ipa-client
+  - dracut-fips
+  - dracut-fips-aesni
+
+thirdparty:
+  - name: EPEL
+    gpg: rpm_gpg_key_epel_7
+    url: "{{ content_source }}/epel/"
+    des: "Extra Packages for Enterprise Linux"
+    repo: epel-7-x86_64
+# - name: Gitlab
+#   gpg: rpm_gpg_key_gitlab
+#   url: "https://packages.gitlab.com/runner/gitlab-runner/el/7/x86_64"
+#   des: Gitlab
+#   repo: gitlab-7-x86_64
+
+host_collections:
+  - name: HC_KVMHOSTS
+    description: "physical KVM servers"
+  - name: HC_DSHOSTS
+    description: "DS 398 servers"
+  - name: HC_CAHOSTS
+    description: "CS servers"
+  - name: HC_RFSHOSTS
+    description: "RFS servers"
+  - name: HC_DBHOSTS
+    description: "DB servers"
+  - name: HC_WAFHOSTS
+    description: "WAF servers"
+  - name: HC_CSPHOSTS
+    description: "CSP servers"
+  - name: HC_VMHOSTS
+    description: "VM servers"
+  - name: HC_SCAPHOSTS
+    description: "SCAP servers"
+
+content_views:
+  - name: CV_RHEL7Ansible
+    repositories:
+      - name: "Red Hat Ansible Engine 2.8 RPMs for Red Hat Enterprise Linux 7 Server x86_64"
+        product: "Red Hat Ansible Engine"
+
+  - name: CV_RHEL7SatTools
+    repositories:
+      - name: "Red Hat Satellite Tools 6.7 for RHEL 7 Server RPMs x86_64"
+        product: "Red Hat Enterprise Linux Server"
+
+  - name: CV_RHEL7Server
+    repositories:
+      - name: "Red Hat Enterprise Linux 7 Server RPMs x86_64 7Server"
+        product: "Red Hat Enterprise Linux Server"
+
+  - name: CV_RHEL7Extras
+    repositories:
+      - name: "Red Hat Enterprise Linux 7 Server - Extras RPMs x86_64"
+        product: "Red Hat Enterprise Linux Server"
+
+  - name: CV_RHEL7Optional
+    repositories:
+      - name: "Red Hat Enterprise Linux 7 Server - Optional RPMs x86_64 7Server"
+        product: "Red Hat Enterprise Linux Server"
+
+  - name: CV_RHEL7SC
+    repositories:
+      - name: "Red Hat Software Collections RPMs for Red Hat Enterprise Linux 7 Server x86_64 7Server"
+        product: "Red Hat Software Collections (for RHEL Server)"
+
+composite_content_views:
+  - name: CCV_RHEL7_KVM
+    components:
+      - content_view: CV_RHEL7Server
+        latest: true
+      - content_view: CV_RHEL7Ansible
+        latest: true
+      - content_view: CV_RHEL7Extras
+        latest: true
+      - content_view: CV_RHEL7Optional
+        latest: true
+      - content_view: CV_RHEL7SatTools
+        latest: true
+
+  - name: CCV_RHEL7_VM
+    components:
+      - content_view: CV_RHEL7Server
+        latest: true
+      - content_view: CV_RHEL7Optional
+        latest: true
+      - content_view: CV_RHEL7SatTools
+        latest: true
+
+  - name: CCV_RHEL7_APPS
+    components:
+      - content_view: CV_RHEL7Server
+        latest: true
+      - content_view: CV_RHEL7Optional
+        latest: true
+      - content_view: CV_RHEL7SC
+        latest: true
+      - content_view: CV_RHEL7SatTools
+        latest: true
+
+activation_keys:
+  - name: AK_KVM
+    lifecycle_environment: "{{ prod_lifecycle_env }}"
+    content_view: CCV_RHEL7_KVM
+    host_collections:
+      - HC_KVMHOSTS
+    subscriptions:
+      - name: "Red Hat Enterprise Linux Server with Smart Management, Standard (Physical or Virtual Nodes)"
+    content_overrides:
+      - label: rhel-7-server-ansible-2.8-rpms
+        override: enabled
+      - label: rhel-7-server-extras-rpms
+        override: enabled
+      - label: rhel-7-server-optional-rpms
+        override: enabled
+      - label: rhel-7-server-satellite-tools-{{ satellite_deployment_version }}-rpms
+        override: enabled
+    auto_attach: true
+    release_version: 7Server
+    service_level: Standard
+
+  - name: AK_VM
+    lifecycle_environment: "{{ prod_lifecycle_env }}"
+    content_view: 'CV_RHEL7Server'
+    host_collections:
+      - HC_VMHOSTS
+    subscriptions:
+      - name: "Red Hat Enterprise Linux Server with Smart Management, Standard (Physical or Virtual Nodes)"
+    content_overrides:
+      - label: rhel-server-rhscl-7-rpms
+        override: enabled
+      - label: rhel-7-server-optional-rpms
+        override: enabled
+      - label: rhel-7-server-satellite-tools-{{ satellite_deployment_version }}-rpms
+        override: enabled
+    auto_attach: true
+    release_version: 7Server
+    service_level: Standard
+
+  - name: AK_APPS
+    lifecycle_environment: "{{ prod_lifecycle_env }}"
+    content_view: 'CV_RHEL7Server'
+    host_collections:
+      - HC_DSHOSTS
+      - HC_CAHOSTS
+      - HC_RFSHOSTS
+      - HC_DBHOSTS
+      - HC_WAFHOSTS
+      - HC_CSPHOSTS
+    subscriptions:
+      - name: "Red Hat Enterprise Linux Server with Smart Management, Standard (Physical or Virtual Nodes)"
+    content_overrides:
+      - label: rhel-server-rhscl-7-rpms
+        override: enabled
+      - label: rhel-7-server-optional-rpms
+        override: enabled
+      - label: rhel-7-server-satellite-tools-{{ satellite_deployment_version }}-rpms
+        override: enabled
+    auto_attach: "false"
+    release_version: "7Server"
+    service_level: "Standard"
+
+# Which Products and Repos to enable that need base search and release version
+products:
+  - name: "Red Hat Enterprise Linux Server"
+    repo: "Red Hat Enterprise Linux 7 Server (RPMs)"
+    version: "7Server"
+  - name: "Red Hat Enterprise Linux Server"
+    repo: "Red Hat Enterprise Linux 7 Server - Optional (RPMs)"
+    version: "7Server"
+  - name: "Red Hat Enterprise Linux Server"
+    repo: "Red Hat Enterprise Linux 7 Server (Kickstart)"
+    version: "7.7"
+#  - name: "Red Hat Enterprise Linux for x86_64"
+#    repo: "Red Hat Enterprise Linux 8 for x86_64 - AppStream (RPMs)"
+#    version: "8"
+#  - name: "Red Hat Enterprise Linux for x86_64"
+#    repo: "Red Hat Enterprise Linux 8 for x86_64 - BaseOS (RPMs)"
+#    version: "8"
+#  - name: "Red Hat Enterprise Linux for x86_64"
+#    repo: "Red Hat Enterprise Linux 8 for x86_64 - Supplementary (RPMs)"
+#    version: "8"
+
+# enable repos that do not require releasever worv: WithOut Release Version
+products_worv:
+  - name: "Red Hat Enterprise Linux Server"
+    repo: "Red Hat Satellite Maintenance 6 (for RHEL 7 Server) (RPMs)"
+  - name: "Red Hat Enterprise Linux Server"
+    repo: "Red Hat Enterprise Linux 7 Server - Extras (RPMs)"
+  - name: "Red Hat Enterprise Linux Server"
+    repo: "Red Hat Satellite Tools 6.7 (for RHEL 7 Server) (RPMs)"
+  - name: "Red Hat Satellite"
+    repo: "Red Hat Satellite 6.7 (for RHEL 7 Server) (RPMs)"
+  - name: "Red Hat Ansible Engine"
+    repo: "Red Hat Ansible Engine 2.8 RPMs for Red Hat Enterprise Linux 7 Server"
+#  - name: "Red Hat Enterprise Linux for x86_64"
+#    repo: "Red Hat Satellite Tools 6.7 for RHEL 8 x86_64 (RPMs)"
+
+organization_config:
+  - name: "{{ foreman_initial_organization }}"
+    locations: "{{ foreman_initial_location }}"
+satellite_async_repo_sync: false
+satellite_show_changed_for_repo_sync: true
+
+domains:
+  - name: "{{ domain }}"
+    description: "{{ domain }}"
+    locations:
+      - "{{ foreman_initial_location }}"
+    organizations:
+      - "{{ foreman_initial_organization }}"
+    state: present
+
+subnets:
+  - name: "{{ mgmtsubnet }}"
+    description: "{{ mgmtsubnet }}"
+    locations:
+      - "{{ foreman_initial_location }}"
+    organizations:
+      - "{{ foreman_initial_organization }}"
+    network: "{{ network }}"
+    mask: "{{ mask }}"
+    gateway: "{{ foreman_proxy_dhcp_gateway }}"
+    from_ip: "{{ foreman_proxy_dhcp_fromip }}"
+    to_ip: "{{ foreman_proxy_dhcp_toip }}"
+    domains:
+      - "{{ domain }}"
+    boot_mode: "DHCP"
+    ipam: "DHCP"
+    dhcp_proxy: "{{ satellite_fqdn }}"
+    discovery_proxy: "{{ satellite_fqdn }}"
+    httpboot_proxy: "{{ satellite_fqdn }}"
+    template_proxy: "{{ satellite_fqdn }}"
+    tftp_proxy: "{{ satellite_fqdn }}"
+    remote_execution_proxy: "{{ satellite_fqdn }}"
+    server_url: "http://{{ satellite_fqdn }}"
+
+  - name: "DMZ_inside"
+    description: "10.1.19.0"
+    locations:
+      - "{{ foreman_initial_location }}"
+    organizations:
+      - "{{ foreman_initial_organization }}"
+    network: "10.1.19.0"
+    mask: "255.255.255.0"
+    gateway: "10.1.19.1"
+    domains:
+      - "{{ domain }}"
+    boot_mode: "DHCP"
+    ipam: "DHCP"
+    dns_proxy: "{{ satellite_fqdn }}"
+    state: present
+
+hostgroups:
+  # - name: openscap
+  #   organization: "{{ foreman_initial_organization }}"
+  #   location: "{{ foreman_initial_location }}"
+  #   architecture: x86_64
+  #   content_lifecycle_name: Library
+  #   scap_profile_id: 22
+  #   scap_scan_period: weekly
+  #   scap_scan_day: sunday
+
+  - name: "BASELINE"
+    description: "BASELINE"
+    architecture: "{{ server_basearch }}"
+    operatingsystem: "{{ operatingsystem }}"
+    lifecycle_environment: "{{ prod_lifecycle_env }}"
+    content_source: "{{ satellite_fqdn }}"
+    content_view: 'CV_RHEL7Server'
+    kickstart_repository: "{{ kickstart_repository }}"
+    ptable: "{{ partition_table_name }}"
+    environment: "production"
+    organization: "{{ foreman_initial_organization }}"
+    organizations: 
+      - "{{ foreman_initial_organization }}"
+    locations: 
+      - "{{ foreman_initial_location }}"
+    domain: "{{ domain }}"
+    subnet: "{{ mgmtsubnet }}"
+    parameters:
+      - name: allowusbstorage
+        value: false
+      - name: pass_max_days
+        value: 60
+      - name: pass_min_days
+        value: 1
+      - name: pass_min_len
+        value: 15
+    state: present
+
+  - name: "VM"
+    parent: "BASELINE"
+    organization: "{{ foreman_initial_organization }}"
+    state: present
+
+  - name: "CS9"
+    parent: "BASELINE/VM"
+    organization: "{{ foreman_initial_organization }}"
+    state: present
+
+  - name: "CS9CA"
+    parent: "BASELINE/VM/CS9"
+    organization: "{{ foreman_initial_organization }}"
+    state: present
+
+  - name: "CS9DRM"
+    parent: "BASELINE/VM/CS9"
+    organization: "{{ foreman_initial_organization }}"
+    state: present
+
+  - name: "GOTS"
+    parent: "BASELINE/VM"
+    organization: "{{ foreman_initial_organization }}"
+    state: present
+
+  - name: "ARA"
+    parent: "BASELINE/VM/GOTS"
+    organization: "{{ foreman_initial_organization }}"
+    state: present
+
+  - name: "GDS-VM"
+    parent: "BASELINE/VM/GOTS"
+    organization: "{{ foreman_initial_organization }}"
+    state: present
+
+  - name: "PORTAL"
+    parent: "BASELINE/VM/GOTS"
+    organization: "{{ foreman_initial_organization }}"
+    state: present
+
+  - name: "PUREBRED"
+    parent: "BASELINE/VM/GOTS"
+    organization: "{{ foreman_initial_organization }}"
+    state: present
+
+  - name: "RFS-GOTS"
+    parent: "BASELINE/VM/GOTS"
+    organization: "{{ foreman_initial_organization }}"
+    state: present
+
+  - name: "WAF-PORTAL"
+    parent: "BASELINE/VM/GOTS"
+    organization: "{{ foreman_initial_organization }}"
+    state: present
+
+  - name: "WBBR"
+    parent: "BASELINE/VM/GOTS"
+    organization: "{{ foreman_initial_organization }}"
+    state: present
+
+  - name: "RFS"
+    parent: "BASELINE/VM"
+    organization: "{{ foreman_initial_organization }}"
+    state: present
+
+  - name: "WAF"
+    parent: "BASELINE/VM"
+    organization: "{{ foreman_initial_organization }}"
+    state: present
+
+  - name: "WAF-CA"
+    parent: "BASELINE/VM/WAF"
+    organization: "{{ foreman_initial_organization }}"
+    state: present
+
+  - name: "WAF-DRM"
+    parent: "BASELINE/VM/WAF"
+    organization: "{{ foreman_initial_organization }}"
+    state: present
+
+openscap_puppet_classes: foreman_scap_client,foreman_scap_client::params,stdlib,stdlib::stages
+
+satellite_organizations:
+  - name: "{{ foreman_initial_organization }}"
+    label: "{{ foreman_initial_organization }}"
+    description: ""
+    locations:
+      - name: "{{ foreman_initial_location }}"
+        description: ""
+
+########## new stuff being refactered !!!!!!!!
+#
+# Empty list to be populated when creating sync plan
+sync_plan_products: []
+
+rhel7_product:
+  - name: "Red Hat Enterprise Linux 7 Server (RPMs)"
+    label: rhel-7-server-rpms
+    state: enabled
+    product: &rhel7 "Red Hat Enterprise Linux Server"
+    repositories:
+      - releasever: "7Server"
+        basearch: "{{ server_basearch }}"
+  - name: "Red Hat Enterprise Linux 7 Server (Kickstart)"
+    label: rhel-7-server-kickstart
+    state: enabled
+    product: *rhel7
+    repositories:
+      - releasever: "7Server"
+        basearch: "{{ server_basearch }}"
+  - name: "Red Hat Satellite Tools {{ satellite_version }} (for RHEL 7 Server) (RPMs)"
+    label: rhel-7-server-satellite-tools-{{ satellite_version }}-rpms
+    state: enabled
+    product: *rhel7
+    repositories:
+      - basearch: "{{ server_basearch }}"
+  - name: "Red Hat Enterprise Linux 7 Server - Extras (RPMs)"
+    label: rhel-7-server-extras-rpms
+    state: enabled
+    product: *rhel7
+    repositories:
+      - basearch: "{{ server_basearch }}"
+  - name: "Red Hat Enterprise Linux 7 Server - RH Common (RPMs)"
+    label: rhel-7-server-rh-common-rpms
+    state: enabled
+    product: *rhel7
+    repositories:
+      - releasever: "7Server"
+        basearch: "{{ server_basearch }}"
+  - name: "Red Hat Enterprise Linux 7 Server - Supplementary (RPMs)"
+    label: rhel-7-server-supplementary-rpms
+    state: enabled
+    product: *rhel7
+    repositories:
+      - releasever: "7Server"
+        basearch: "{{ server_basearch }}"
+  - name: "Red Hat Enterprise Linux 7 Server - Supplementary (RPMs)"
+    label: rhel-7-server-optional-rpms
+    state: enabled
+    product: *rhel7
+    repositories:
+      - releasever: "7Server"
+        basearch: "{{ server_basearch }}"
+
+ansible_product:
+  - reposet: "Red Hat Ansible Engine {{ ansible_major }} RPMs for Red Hat Enterprise Linux {{ rhel_major }} Server"
+    label: rhel-7-server-ansible-2-rpms
+    product: Red Hat Ansible Engine
+    state: enabled
+    repositories:
+      - basearch: "{{ server_basearch }}"

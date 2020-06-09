@@ -1,0 +1,39 @@
+host
+Id,Name,Operating System,Host Group,IP,MAC
+9,ca-host-1.c3pki.nit.disa.mil,RHEL Server 6.9,BASELINE/PHYSICAL/HYPERVISOR/CA-HOST,10.1.19.25,c4:34:6b:a9:48:4c
+32,ca-host-2.c3pki.nit.disa.mil,RHEL Server 6.9,BASELINE/PHYSICAL/HYPERVISOR/CA-HOST,10.1.19.42,28:80:23:a4:18:54
+10,drm-host-1.c3pki.nit.disa.mil,RHEL Server 6.9,BASELINE/PHYSICAL/HYPERVISOR/DRM-HOST,10.1.19.27,40:a8:f0:3b:90:fc
+33,drm-host-2.c3pki.nit.disa.mil,RHEL Server 6.10,BASELINE/PHYSICAL/HYPERVISOR/DRM-HOST,10.1.19.44,28:80:23:a4:18:a8
+56,drm-host-4.c3pki.nit.disa.mil,RHEL_Server_6.6,BASELINE/PHYSICAL/HYPERVISOR/DRM-HOST,10.1.19.249,28:80:23:a4:1c:68
+16,ds-ca-host-1.c3pki.nit.disa.mil,RHEL Server 6.10,BASELINE/PHYSICAL/DS/CA-DS,10.1.19.29,00:50:56:9e:6b:d7
+35,ds-ca-host-2.c3pki.nit.disa.mil,RHEL Server 6.10,BASELINE/PHYSICAL/DS/CA-DS,10.1.19.46,00:50:56:9e:d3:1a
+17,ds-drm-host-1.c3pki.nit.disa.mil,RHEL Server 6.10,BASELINE/PHYSICAL/DS/DRM-DS,10.1.19.30,00:50:56:9e:82:83
+34,ds-drm-host-2.c3pki.nit.disa.mil,RHEL_Server_6.6,BASELINE/PHYSICAL/DS/DRM-DS,10.1.19.47,28:80:23:9b:ed:d4
+52,gds-ldap-1.c3pki.nit.disa.mil,RHEL_Server_7.2,BASELINE/PHYSICAL/GDS-LDAP,10.1.19.90,14:58:d0:5b:d1:f8
+3,gots-db-1.c3pki.nit.disa.mil,RHEL Server 6.10,BASELINE/PHYSICAL/GOTS-DB,10.1.19.35,00:50:56:9e:a9:19
+6,gots-host-1.c3pki.nit.disa.mil,RHEL Server 6.9,BASELINE/PHYSICAL/HYPERVISOR/GOTS-HOST,10.1.19.34,40:a8:f0:3b:99:60
+1,mgmt-1.c3pki.nit.disa.mil,RHEL Server 6.10,BASELINE/PHYSICAL/SATELLITE,10.1.19.21,00:50:56:9e:c2:42
+31,nagios-1.c3pki.nit.disa.mil,RHEL Server 6.10,BASELINE/NAGIOS,10.1.19.41,00:50:56:9e:3e:b5
+24,rsyslog-1.c3pki.nit.disa.mil,RHEL Server 6.10,BASELINE/SYSLOG,10.1.19.39,00:50:56:9e:80:91
+18,vm-ara-1.c3pki.nit.disa.mil,RHEL_Server_6.6,BASELINE/VM/GOTS/ARA,10.1.19.38,52:54:00:1f:37:32
+13,vm-ca-1.c3pki.nit.disa.mil,RHEL_Server_5.11,BASELINE/VM/CS/CA,10.1.19.31,00:50:56:9e:74:b7
+36,vm-ca-3.c3pki.nit.disa.mil,RedHat 7.7,BASELINE/VM/CS9/CS9CA,10.1.19.57,00:50:56:9e:57:ee
+38,vm-ca-4.c3pki.nit.disa.mil,RedHat 7.7,BASELINE/VM/CS9/CS9CA,10.1.19.59,00:50:56:9e:14:00
+15,vm-drm-1.c3pki.nit.disa.mil,RHEL_Server_5.11,BASELINE/VM/CS/DRM,10.1.19.33,00:50:56:9e:11:eb
+37,vm-drm-3.c3pki.nit.disa.mil,RedHat 7.7,BASELINE/VM/CS9/CS9DRM,10.1.19.58,00:50:56:9e:35:47
+39,vm-drm-4.c3pki.nit.disa.mil,RedHat 7.7,BASELINE/VM/CS9/CS9DRM,10.1.19.60,00:50:56:9e:73:db
+55,vm-gds-1.c3pki.nit.disa.mil,RedHat 7.7,BASELINE/VM/GOTS/GDS-VM,10.1.19.91,00:50:56:9e:46:5f
+7,vm-pb-1.c3pki.nit.disa.mil,RHEL_Server_6.6,BASELINE/VM/GOTS/PUREBRED,10.1.19.36,52:54:00:08:1c:6c
+70,vm-pb-a.c3pki.nit.disa.mil,RedHat 7.7,BASELINE/VM/GOTS/PUREBRED,10.1.19.61,00:50:56:9e:e3:48
+79,vm-pb-b.c3pki.nit.disa.mil,RedHat 7.7,BASELINE/VM/GOTS/PUREBRED,10.1.19.62,00:50:56:9e:4e:7a
+46,vm-portal-1.c3pki.nit.disa.mil,RedHat 7.7,BASELINE/VM/GOTS/PORTAL,10.1.19.80,00:50:56:9e:4b:86
+47,vm-portal-2.c3pki.nit.disa.mil,RedHat 7.7,BASELINE/VM/GOTS/PORTAL,10.1.19.81,00:50:56:9e:61:53
+11,vm-rfs-1.c3pki.nit.disa.mil,RHEL Server 6.10,BASELINE/VM/RFS,10.1.19.32,00:50:56:9e:14:81
+8,vm-rfs-gots-1.c3pki.nit.disa.mil,RHEL Server 6.10,BASELINE/VM/GOTS/RFS-GOTS,10.1.19.37,00:50:56:9e:7d:00
+12,vm-waf-ca-1.c3pki.nit.disa.mil,RHEL Server 6.10,BASELINE/VM/WAF/WAF-CA,10.1.19.26,00:50:56:9e:2a:1c
+14,vm-waf-drm-1.c3pki.nit.disa.mil,RHEL Server 6.10,BASELINE/VM/WAF/WAF-DRM,10.1.19.28,00:50:56:9e:ae:15
+48,vm-waf-portal-1.c3pki.nit.disa.mil,RedHat 7.7,BASELINE/VM/GOTS/WAF-PORTAL,10.1.19.82,00:50:56:9e:65:3a
+77,vm-wbbr-1.c3pki.nit.disa.mil,RedHat 7.7,BASELINE/VM/GOTS/WBBR,10.1.19.63,00:50:56:9e:8e:59
+25,workstation-1.c3pki.nit.disa.mil,RHEL Server 6.10,BASELINE/PHYSICAL/WORKSTATION,10.1.19.53,00:50:56:9e:6c:0d
+26,workstation-2.c3pki.nit.disa.mil,RedHat 7.7,BASELINE/PHYSICAL/WORKSTATION,10.1.19.54,00:50:56:9e:9b:77
+42,workstation-3.c3pki.nit.disa.mil,RedHat 7.7,BASELINE/PHYSICAL/WORKSTATION,10.1.19.55,c8:d3:ff:6b:a5:9e

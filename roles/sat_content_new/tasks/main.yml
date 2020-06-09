@@ -1,0 +1,7 @@
+---
+# tasks file for sat_content
+
+### Create sync plan
+- name: Config Sync Plan
+  import_tasks: config_sync_plan.yml
+

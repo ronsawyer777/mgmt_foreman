@@ -1,0 +1,38 @@
+---
+# tasks file for sat_settings---
+# TASKS
+- name: main | Change download policy to immediate
+  shell: hammer settings set --name default_download_policy --value {{ settings_default_download_policy }}
+  failed_when: false
+
+- name: main | Change "Delete Host upon unregister" from no to yes
+  become: yes
+  shell: >
+    hammer settings set --name "unregister_delete_host" --value {{ settings_unregister_delete_host }}
+  failed_when: false
+
+- name: main | Change "Installable errata from Content View" from no to yes
+  shell: >
+    hammer settings set --name "errata_status_installable" --value {{ settings_errata_status_installable }}
+  failed_when: false
+
+- name: main | DOD warning banner
+  shell: >
+    hammer settings set --name "login_text"  --value "{{ settings_login_text }}"
+  failed_when: false
+
+- name: main | Set satellite to disconnected
+  shell: >
+    hammer settings set --name "content_disconnected"  --value {{ settings_content_disconnected }}
+  when: rhn_connect == 'disconnect'
+  failed_when: false
+
+- name: main | Set name generator to Off
+  shell: >
+    hammer settings set --name "name_generator_type"  --value {{ settings_name_generator_type }}
+  failed_when: false
+
+- name: main | Set entries per page 
+  shell: >
+    hammer settings set --name "entries_per_page"  --value {{ settings_entries_per_page }}
+  failed_when: false

@@ -1,0 +1,9 @@
+---
+# defaults file for sat_settings
+#settings_content_disconnected: true
+#settings_entries_per_page: 100
+#settings_unregister_delete_host: true
+#settings_errata_status_installable: true
+#settings_login_text:  "I've read & consent to terms in DISA user agreement."
+#settings_name_generator_type: Off
+#settings_default_download_policy: immeadiate

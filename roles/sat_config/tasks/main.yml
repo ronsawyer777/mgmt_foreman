@@ -1,0 +1,34 @@
+---
+# tasks file for sat_config
+
+# Create/update host collections
+- name: main | Config Host Collections
+  import_tasks: config_host_collections.yml
+
+# Create/update lifecycle environment
+- name: main | Config Lifecycle Environment
+  import_tasks: config_lifecycle_env.yml
+
+# Create/update content views
+- name: main | Config Content Views
+  import_tasks: config_content_views.yml
+
+# Create/update activation keys
+- name: main | Config Activation Keys
+  import_tasks: config_activation_keys.yml
+
+# Create/update subnets
+- name: main | Config Subnets
+  import_tasks: config_subnets.yml
+
+# Create/update domains
+- name: main | Config Domains
+  import_tasks: config_domains.yml
+
+# Create hostgroups
+- name: main | Config Hostgroups 
+  import_tasks: config_hostgroups.yml
+
+# Create compute nodes
+# Create compute resources
+#

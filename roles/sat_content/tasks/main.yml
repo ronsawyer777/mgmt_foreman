@@ -1,0 +1,137 @@
+---
+# tasks file for sat_content---
+
+- name: main | Skip manifest steps if manifest is already uploaded - {{ foreman_initial_location }}
+  shell: hammer subscription list --organization "{{ foreman_initial_organization }}"| grep "{{ account_id }}"
+  register: manifest_installed
+  failed_when: manifest_installed.rc not in [1,0]
+
+- debug:
+    msg: "{{ manifest_installed }}"
+
+- name:
+  block:
+
+  - name: main | Pull down manifest - {{ foreman_initial_location }}
+    get_url:
+      url: https://subscription.rhsm.redhat.com/subscription/consumers/{{ manifest_uuid }}/export
+      username: "{{ lookup('env', 'RHN_USER') }}"
+      password: "{{ lookup('env', 'RHN_PASSWORD') }}"
+      dest: /opt/satellite_manifest.zip
+      validate_certs: no
+    when: rhn_connect != 'disconnect'
+
+  - name: main | Copy manifest from local system to remote target - {{ foreman_initial_location }}
+    copy:
+      src: "{{ satellite_manifest_src }}"
+      dest: "{{ satellite_manifest_dest }}"
+      owner: root
+      group: root
+      mode: 0640
+    when: rhn_connect == 'disconnect'
+
+  - name: main | Upload the manifest file to satellite - {{ foreman_initial_location }}
+    shell: hammer subscription upload --organization "{{ foreman_initial_organization }}" --file {{ satellite_manifest_dest }}
+    register: manifest_upload_output
+
+  when: manifest_installed.rc != 0
+
+- name: main | Check to see if localhost is running satellite - {{ foreman_initial_location }}
+  shell: command -v hammer >/dev/null 2>&1
+  register: is_hammer_exist
+
+- name: main | Change the CDN URL to Master satellite - {{ foreman_initial_location }}
+  shell: hammer organization update --redhat-repository-url "{{ content_source }}" --organization "{{ foreman_initial_organization }}" --id 1
+  when:  rhn_connect == 'disconnect'
+
+- name: main | Search for the proper name convention of Software Collections - {{ foreman_initial_location }}
+  shell: hammer product list --organization {{ foreman_initial_organization }} --search "Red Hat Software Collections" | grep -v -e "Beta" -e "--" -e "NAME" | awk -F "|" '{print $1}' | tr -d ' '
+  register: product_id
+
+- set_fact:
+   rhscl: "{{ product_id.stdout_lines }}"
+
+- name: main | Enable repos for Red Hat Software Collections - {{ foreman_initial_location }}
+  shell: "hammer repository-set enable --basearch {{ server_basearch }} --releasever {{ server_releasever }} --product-id '{{ rhscl | first }}' --name '{{ item }}' --organization {{ foreman_initial_organization }}"
+  register: cmd
+  failed_when: cmd.rc not in [70,0]
+  loop:
+    - "{{ RHSCL_name }}"
+
+# worv = without release ver
+- name: main | Enable repos that do not require release version - {{ foreman_initial_location }}
+  command: hammer repository-set enable --basearch "{{ server_basearch }}" --product "{{ item.name }}"  --name "{{ item.repo }}" --organization "{{ foreman_initial_organization }}"
+  register: cmd
+  failed_when: cmd.rc not in [70,0]
+  loop: "{{ products_worv }}"
+
+- name: main | Enable repos that require base search and release version - {{ foreman_initial_location }}
+  command: hammer repository-set enable --basearch "{{ server_basearch }}" --releasever "{{ item.version }}" --product "{{ item.name }}" --name "{{ item.repo }}" --organization "{{ foreman_initial_organization }}"
+  register: cmd
+  failed_when: cmd.rc not in [70,0]
+  loop: "{{ products }}"
+
+- name: main | Move thirdparty gpg keys - {{ foreman_initial_location }}
+  copy:
+    src: "{{ item.gpg }}"
+    dest: /opt/{{ item.gpg }}
+    owner: root
+    group: root
+  with_items:
+    - "{{ thirdparty }}"
+
+- name: main | Create thirdparty gpg keys - {{ foreman_initial_location }}
+  command: hammer gpg create --key /opt/"{{ item.gpg }}" --organization "{{ foreman_initial_organization }}" --name "{{ item.gpg }}"
+  register: cmd
+  failed_when: cmd.rc not in [65,0]
+  with_items:
+    - "{{ thirdparty }}"
+
+- name: main | Create thirdpary Products - {{ foreman_initial_location }}
+  command: hammer product create --gpg-key "{{ item.gpg }}" --name "{{ item.name }}" --description "{{ item.des }}" --organization "{{ foreman_initial_organization }}"
+  register: cmd
+  failed_when: cmd.rc not in [65,0]
+  with_items:
+    - "{{ thirdparty }}"
+
+- name: main | Create thirdparty repo - {{ foreman_initial_location }}
+  shell: hammer repository create --organization "{{ foreman_initial_organization }}" --content-type yum --download-policy "immediate" --gpg-key "{{ item.gpg }}" --name "{{ item.repo }}" --product "{{ item.name }}" --url "{{ item.url }}"
+  register: cmd
+  failed_when: cmd.rc not in [65,0]
+  with_items:
+    - "{{ thirdparty }}"
+
+# sync content
+
+- name: main | Get product ID's - {{ foreman_initial_location }}
+  shell: hammer product list  --organization "{{ foreman_initial_organization }}"  | grep -v -e "| 0" -e "ID" -e "--" | awk -F "|" '{print $1}'
+  register: product
+
+- name: main | Sync repos asynchronously - {{ foreman_initial_location }}
+  shell: hammer product synchronize --id "{{ item }}"
+  retries: 3
+  delay: 3
+  register: result
+  until: result.rc == 0
+  with_items:
+    - "{{ product.stdout_lines }}"
+
+- name: main | Waiting for Syncs to start - {{ foreman_initial_location }}
+  pause:
+    minutes: 5
+
+- name: main | getting list of enabled repos - {{ foreman_initial_location }}
+  shell: hammer repository list | grep -v -e "--" -e "ID" | awk '{print $1}'
+  register: repo
+
+- name: main | checking if repos synced with a success - {{ foreman_initial_location }}
+  shell: hammer repository info --id {{ item }} | grep -i success
+  with_items:
+    - "{{ repo.stdout_lines }}"
+
+#- name: main | Ensure that pulp directory is owned by apache - {{ foreman_initial_location }}
+#  file:
+#    path: /var/lib/pulp
+#    owner: apache
+#    group: apache
+#    mode: '0755'

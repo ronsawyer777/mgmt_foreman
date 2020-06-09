@@ -1,0 +1,8 @@
+activation-key
+ID,Name,Consumed,Lifecycle Environment,Content View
+1,RHEL,37 of Unlimited,Library,Default Organization View
+2,RHEL5PKI,1 of Unlimited,Library,Default Organization View
+4,RHEL6OPTIONAL,1 of Unlimited,Library,Default Organization View
+3,RHEL6PKI,19 of Unlimited,Library,Default Organization View
+5,RHEL7OPTIONAL,2 of Unlimited,Library,Default Organization View
+6,RHEL7PKI,11 of Unlimited,Library,Default Organization View

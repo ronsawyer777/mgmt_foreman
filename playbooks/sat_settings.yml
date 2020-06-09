@@ -1,0 +1,5 @@
+---
+- hosts: mgmt
+  roles:
+     - { role: sat_settings }
+

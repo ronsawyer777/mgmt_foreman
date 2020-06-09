@@ -1,0 +1,15 @@
+---
+# vars file for sat_vm
+vm_location: "/var/lib/libvirt/images"
+
+guests:
+  - name: "{{ hostname }}"
+    mem: 20480
+    cpus: 4
+    os_type: rhel7.7
+    file_type: qcow2
+    disk: "path={{ vm_location }}/{{ hostname }}.qcow2,size=300"
+    network: "default"
+    boot_url: "{{ content_source }}/rhel77"
+    extra_args: "ks={{ content_source }}/kick/{{ hostname }}.cfg ip=dhcp console=tty0 console=ttyS0,115200n8"
+

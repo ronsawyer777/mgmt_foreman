@@ -1,0 +1,11 @@
+---
+- hosts: mgmt
+  tasks:
+  - name: install theforeman and apypie rpms
+    yum:
+      disable_gpg_check: yes
+      name: "{{ item }}"
+      state: present
+    with_items:
+      - http://192.168.122.1/pub/python2-apypie-0.2.1-1.el7.noarch.rpm
+      - http://192.168.122.1/pub/ansible-collection-theforeman-foreman-0.3.0-1.el7.noarch.rpm

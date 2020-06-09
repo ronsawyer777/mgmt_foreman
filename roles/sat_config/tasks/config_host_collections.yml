@@ -1,0 +1,14 @@
+---
+# tasks file for sat_config
+
+### host collections
+- name: "config_host_collections | Create PKI host collections"
+  katello_host_collection:
+    username: "{{ foreman_initial_admin_username }}"
+    password: "{{ foreman_initial_admin_password }}"
+    server_url: "{{ satellite_url }}"
+    name: "{{ item.name }}"
+    description: "{{ item.description }}"
+    organization: "{{ foreman_initial_organization }}"
+    state: present
+  with_items: "{{ host_collections }}"

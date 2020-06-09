@@ -1,0 +1,6 @@
+---
+- name: create VMs
+  hosts: kvm
+  become: true
+  roles:
+   - {role: sat_vm}

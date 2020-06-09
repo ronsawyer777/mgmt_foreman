@@ -1,0 +1,12 @@
+---
+- name: "config_lifecycle_env | Create a lifecycle environment (Production)"
+  katello_lifecycle_environment:
+    username: "{{ foreman_initial_admin_username }}"
+    password: "{{ foreman_initial_admin_password }}"
+    server_url: "{{ satellite_url }}"
+    name: "{{ prod_lifecycle_env }}"
+    label: "{{ prod_lifecycle_env }}"
+    description: "{{ prod_lifecycle_env }}"
+    prior: "Library"
+    organization: "{{ foreman_initial_organization }}"
+    state: "present"

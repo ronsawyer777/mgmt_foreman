@@ -1,0 +1,56 @@
+template
+Id,Name,Type
+50,add-sa-acct,snippet
+51,adjust-env,snippet
+52,admin-account,snippet
+44,Boot disk iPXE - generic host,Bootdisk
+43,Boot disk iPXE - host,Bootdisk
+63,configure_ebtables,snippet
+53,disable-ipv6-fw,snippet
+54,disable-smartd,snippet
+81,Discovery Red Hat kexec,kexec
+83,dod-pki-rhel-7-vm-kickstart,provision
+84,dod-pki-rhel-7-vm-pxe,PXELinux
+73,dynamic-kickstart,provision
+55,dynamic-packages,snippet
+56,enable-ntp,snippet
+57,enable-serial-getty,snippet
+58,get-audit-files,snippet
+59,get-ip-aliases,snippet
+60,get-iptables-dynamic,snippet
+61,get-log-rotation-files,snippet
+48,idm_register,snippet
+62,install-kvm-scripts,snippet
+22,Kickstart default iPXE,iPXE
+21,Kickstart default PXELinux,PXELinux
+39,kickstart_networking_setup,snippet
+74,ks-rhel5-vm-ca-1,provision
+75,ks-rhel5-vm-drm-1,provision
+76,ks-rhel6-ca-1,provision
+77,ks-rhel6-ds-ca-1,provision
+78,ks-rhel6-ds-drm-1,provision
+80,ks-rhel6-vm-waf-ca-1,provision
+79,ks-rhel6-vm-waf-drm-1,provision
+64,lock-down-ssh,snippet
+65,modify-mon-email,snippet
+66,modify-sudoers,snippet
+67,network-tweaks,snippet
+85,NextGen-baseline-kickstart,provision
+86,NextGen-base-packages,snippet
+90,NextGen-firstboot,snippet
+89,NextGen-network-config,snippet
+88,NextGen-post-install,snippet
+87,NextGen-subscription-registration,snippet
+82,pki_subscription_manager_registration,snippet
+71,pullproductkey,snippet
+40,puppet.conf,snippet
+2,PXELinux default local boot,PXELinux
+1,PXELinux global default,PXELinux
+68,root-ulimit-mods,snippet
+45,Satellite Kickstart Default,provision
+47,Satellite Kickstart Default Finish,finish
+46,Satellite Kickstart Default User Data,user_data
+69,stig-lockdown,snippet
+49,subscription_manager_registration,snippet
+70,sysctl-mods,snippet
+72,uefi-pxe,PXELinux

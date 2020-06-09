@@ -1,0 +1,35 @@
+---
+# tasks file for sat_user
+- name: "Create user {{ svc_user }}"
+  user:
+    name: "{{ svc_user }}"
+    create_home: true
+    generate_ssh_key: true
+    expires: -1
+    append: true
+    groups:
+      - wheel
+    password: "{{ svc_password }}"
+
+- name: Create a user
+  foreman_user:
+    name: "{{ svc_user }}"
+    firstname: Ansible
+    lastname: Service
+    mail: "root@{{ domain }}"
+    description: Ansible Service Account
+    admin: true
+    user_password: "{{ svc_password }}"
+    default_location: "{{ foreman_initial_location }}"
+    default_organization: "{{ foreman_initial_organization }}"
+    auth_source: Internal
+    timezone: UTC
+    locale: en
+    roles:
+      - Manager
+    locations:
+      - "{{ foreman_initial_location }}"
+    organizations:
+      - "{{ foreman_initial_organization }}"
+    state: present
+

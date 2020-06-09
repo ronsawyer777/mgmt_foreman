@@ -1,0 +1,9 @@
+model
+Id,Name,Vendor class,HW model
+4,HP ProBook 640 G1,,
+5,HP ProBook 640 G2,,
+3,KVM,,
+1,ProLiant DL380e Gen8,,
+2,ProLiant DL580 Gen8,,
+7,"VMware7,1",,
+6,VMware Virtual Platform,,

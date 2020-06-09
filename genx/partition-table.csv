@@ -1,0 +1,19 @@
+partition-table
+Id,Name,OS Family
+1,AutoYaST entire SCSI disk,Suse
+2,AutoYaST entire virtual disk,Suse
+3,AutoYaST LVM,Suse
+15,disk-part-rhel5,
+12,disk-part-rhel6-dl580,
+13,disk-part-rhel6-rfs,
+14,disk-part-rhel6-waf,
+16,dod-pki-public-trust-partition,Redhat
+11,Dynamic-Disk-Configuration,Redhat
+4,FreeBSD,Freebsd
+5,Jumpstart default,Solaris
+6,Jumpstart mirrored,Solaris
+10,Junos default fake,Junos
+7,Kickstart default,Redhat
+17,NextGen-Disk-Configuration,Redhat
+9,Preseed custom LVM,Debian
+8,Preseed default,Debian

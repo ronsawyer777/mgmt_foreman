@@ -1,0 +1,25 @@
+---
+# handlers file for sat_config
+- name: handler - publish content views
+  katello_content_view_version:
+    username: "{{ foreman_initial_admin_username }}"
+    password: "{{ foreman_initial_admin_password }}"
+    server_url: "{{ satellite_url }}"
+    content_view: "{{ item.name }}"
+    organization: "{{ foreman_initial_organization }}"
+    lifecycle_environments:
+      - Library
+      - "{{ prod_lifecycle_env }}"
+  with_items: "{{ content_views }}" 
+
+- name: handler - publish composite content views
+  katello_content_view_version:
+    username: "{{ foreman_initial_admin_username }}"
+    password: "{{ foreman_initial_admin_password }}"
+    server_url: "{{ satellite_url }}"
+    content_view: "{{ item.name }}"
+    organization: "{{ foreman_initial_organization }}"
+    lifecycle_environments:
+      - Library
+      - "{{ prod_lifecycle_env }}"
+  with_items: "{{ composite_content_views }}" 

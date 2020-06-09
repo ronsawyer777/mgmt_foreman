@@ -1,0 +1,15 @@
+os
+Id,Title,Release name,Family
+10,RedHat 7.4,"",Redhat
+2,RHEL_Server_5.11,,Redhat
+3,RHEL Server 6.7,,Redhat
+13,RedHat 7.6,,Redhat
+4,RHEL Server 6.8,,Redhat
+1,RHEL_Server_6.6,"",Redhat
+8,RedHat 7.3,,Redhat
+11,RedHat 7.5,,Redhat
+14,RedHat 7.7,,Redhat
+6,RHEL_Server_7.1,,Redhat
+12,RHEL Server 6.10,,Redhat
+9,RHEL Server 6.9,,Redhat
+7,RHEL_Server_7.2,,Redhat

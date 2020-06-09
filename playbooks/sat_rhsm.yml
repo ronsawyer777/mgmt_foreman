@@ -1,0 +1,15 @@
+---
+- hosts: mgmt
+  roles:
+    - role: rhsm
+  vars:
+    rhsm_username: your_username
+    rhsm_password: your_password
+    rhsm_auto_attach: true
+    rhsm_repositories:
+      only:
+        - rhel-7-server-rpms
+        - rhel-7-server-optional-rpms
+        - rhel-7-server-extras-rpms
+    rhsm_release: 7Server
+

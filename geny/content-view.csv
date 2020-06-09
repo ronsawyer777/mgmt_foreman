@@ -1,0 +1,11 @@
+Content View ID,Name,Label,Composite,Last Published,Repository IDs
+13,CCV_RHEL7_Host,CCV_RHEL7_Host,true,2020/05/13 15:41:41,"23, 13, 15, 17, 21, 19"
+14,CCV_RHEL7_VM,CCV_RHEL7_VM,true,2020/05/13 15:44:05,"13, 21"
+10,CV_Ansible28,CV_Ansible28,false,2020/05/13 13:44:01,1
+11,CV_Puppet,CV_Puppet,false,"",""
+5,CV_RHEL7,CV_RHEL7,false,2020/05/13 12:25:37,5
+6,CV_RHEL7Extras,CV_RHEL7Extras,false,2020/05/13 13:03:47,2
+7,CV_RHEL7Optional,CV_RHEL7Optional,false,2020/05/13 13:06:36,6
+9,CV_RHEL7SatelliteTools,CV_RHEL7SatelliteTools,false,2020/05/13 13:42:28,11
+8,CV_RHEL7SC,CV_RHEL7SC,false,2020/05/13 13:33:43,8
+2,Default Organization View,99811c11-959a-4acb-90e3-9532b2f0c6c8,false,2020/03/30 19:28:26,""
