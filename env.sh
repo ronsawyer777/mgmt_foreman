@@ -2,14 +2,14 @@
 
 #export ANSIBLE_DEBUG=1
 # defines the installation location so as to use the correct variables for this location
-export INITIAL_ORGANIZATION="PKI"
-export INITIAL_LOCATION="JITC"
+export INITIAL_ORGANIZATION="EXAMPLE_ORG"
+export INITIAL_LOCATION="EXAMPLE_LOC"
 #export INSTALL_LOCATION="OM"
 #export INSTALL_LOCATION="MECH"
 #export INSTALL_LOCATION="OKC"
 
 #1. SAT_ACCOUNT_ID is your Red Hat Account Number
-export SAT_ACCOUNT_ID='6326891'
+export SAT_ACCOUNT_ID='0000000'
 
 #2. Activation key is from access.redhat.com
 #   To Create an activation key on access.redhat.com: https://access.redhat.com/articles/1378093
@@ -29,7 +29,7 @@ export SAT_ACCOUNT_ID='6326891'
 #export CONTENT_SOURCE={FQDN}
 
 #6. FOREMAN_USER is to set the initial admin user for the satellite
-export FOREMAN_USER="satadmin"
+export FOREMAN_USER="myadmin"
 
 #7. FOREMAN_PASSWORD is set for the initial admin user password
 export FOREMAN_PASSWORD="changeme1!"
